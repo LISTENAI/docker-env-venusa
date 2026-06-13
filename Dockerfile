@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM ubuntu:24.04 AS toolchain
+FROM ubuntu:22.04 AS toolchain
 
 RUN <<EOF
 set -eux
@@ -13,7 +13,7 @@ wget -qO- https://download.nucleisys.com/upload/files/toolchain/gcc/nuclei_riscv
 EOF
 
 
-FROM ubuntu:24.04
+FROM ubuntu:22.04
 
 RUN <<EOF
 set -eux
@@ -23,6 +23,8 @@ apt-get install -y --no-install-recommends \
     cmake \
     git \
     git-lfs \
+    libncursesw5 \
+    libtinfo5 \
     make \
     ninja-build \
     python3 \
